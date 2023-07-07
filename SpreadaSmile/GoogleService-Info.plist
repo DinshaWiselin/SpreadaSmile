@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>874162311953-1co0opvg3dj0l7uv5sh9220qk01frsj1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.874162311953-1co0opvg3dj0l7uv5sh9220qk01frsj1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCJPJSklIhn6t4aHc7Mi1N-P4Ua7WBnBPQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>874162311953</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>de.dinsha.SpreadaSmile</string>
+	<key>PROJECT_ID</key>
+	<string>spreadasmile-2de3e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spreadasmile-2de3e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:874162311953:ios:0f43f5d9c4158a858e32b0</string>
+</dict>
+</plist>
