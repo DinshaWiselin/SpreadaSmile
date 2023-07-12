@@ -14,8 +14,8 @@ struct HomeView: View {
        
         
         NavigationStack(path: $viewModel.navPath){
-           
-
+            ZStack{
+                
                 List{
                     ForEach(viewModel.filteredProducts , id: \.self){ product in
                         SingleProduct(product: product)
@@ -29,7 +29,7 @@ struct HomeView: View {
                 .listStyle(.plain)
                 
                 
-                 .navigationTitle("SpreadaSmile")
+                .navigationTitle("SpreadaSmile")
                 
                 .onAppear{
                     viewModel.fetchProducts()
@@ -41,8 +41,8 @@ struct HomeView: View {
                 })
             }
             .searchable(text: $viewModel.searchProduct)
-        
-        
+            
+        }
         }
     }
 struct HomeView_Previews: PreviewProvider {
