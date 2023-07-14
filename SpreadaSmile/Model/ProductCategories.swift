@@ -6,13 +6,18 @@
 //
 
 import Foundation
-struct ProductCategories: Identifiable {
+struct ProductCategories: Identifiable,Hashable {
     var id = UUID()
     var name: String
     var image: String
-    
+    static var productTrending = [ProductCategories(name: "jewelery", image: ""),
+                                  ProductCategories(name: "Clothes", image: ""),
+                                  ProductCategories(name: "Electronik", image: "")]
+    static var productCategory = [ProductCategories(name: "Trending Gifts", image: "Trend"),
+                           ProductCategories(name: "Personalised", image: "Persnal"),
+                           ProductCategories(name: "Flowers", image: "Flowers"),
+                           ProductCategories(name: "By Occations", image: "giftbyOccasions"),
+                           ProductCategories(name: "Sweets", image: "Sweets")]
 }
 
-var productCategory = [ProductCategories(name: "TrendingCategories", image: "sweater1"),
-                       ProductCategories(name: "PersonalisedGifts", image: "sweater1"),
-                       ProductCategories(name: "Flowers", image: "sweater1")]
+

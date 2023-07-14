@@ -10,9 +10,10 @@ struct TrendingCategories: Identifiable {
     var id = UUID()
     var name: String
     var image: String
+   static var productTrending = [TrendingCategories(name: "Gifts", image: ""),
+                           TrendingCategories(name: "Clothes", image: ""),
+                           TrendingCategories(name: "Electronik", image: "")]
+
     
 }
 
-var productTrending = [TrendingCategories(name: "Gifts", image: ""),
-                       TrendingCategories(name: "Clothes", image: ""),
-                       TrendingCategories(name: "Electronik", image: "")]

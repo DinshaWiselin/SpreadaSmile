@@ -9,16 +9,16 @@ import SwiftUI
 struct SingleProduct: View {
     var product:Products
     var body: some View {
-        HStack{
+        HStack(alignment:.center){
             VStack{
                 Text(product.category)
                     .font(.title)
                     .bold()
-                    .frame(width: 220,height: 80)
-                Text(product.description)
-                    .frame(width: 220,height: 80)
+                   // .frame(width: 220,height: 80)
+               Text("\(product.price)")
+                    //.frame(width: 220,height: 80)
             }
-            AsyncImage(url: URL(string:product.image)) { phase in
+           AsyncImage(url: URL(string:product.image)) { phase in
                  switch phase{
                  case .empty:
                  ProgressView()
@@ -33,6 +33,7 @@ struct SingleProduct: View {
                  Text("FAIL")
                  }
                  }
+           .clipShape(Circle())
                  //.overlay(alignment: .bottomTrailing) {
                /*  Text(article.source.name)
                  .font(.title)
@@ -49,7 +50,7 @@ struct SingleProduct: View {
 
 struct SingleProduct_Previews: PreviewProvider {
     static var previews: some View {
-        SingleProduct(product: Products.dummyProduct)
+        SingleProduct(product:Products.dummyProduct)
     }
 }
 

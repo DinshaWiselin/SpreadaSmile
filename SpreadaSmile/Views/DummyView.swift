@@ -9,87 +9,44 @@ import SwiftUI
 
 struct DummyView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
-    @StateObject var viewModel = ApiCallViewModel()
+    //@StateObject var viewModel = ApiCallViewModel()
+    @StateObject var appViewModel = AppViewModel()
+       var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     var body: some View {
-        NavigationStack(path: $viewModel.navPath){
+        NavigationStack{
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(ProductCategories.productCategory, id: \.id) { category in
+                        NavigationLink(destination: CategoriesView(category: category)
+                            .environmentObject(appViewModel)){
             
-              if ($viewModel.products.isEmpty){
-             
-             Button(action: {viewModel.fetchProducts()}){
-             
-             Text("Load Characters !")
-             
-             }
-             
-             
-             }
-             else {
-            
-            List {
-                
-                ForEach (viewModel.filteredProducts, id: \.self){myproduct in
-                    SingleProduct(product: myproduct)
-                        .onTapGesture {
-                            viewModel.navPath.append(myproduct)
-                        }
-                        .listStyle(.plain)
-                        .navigationTitle("Gifts")
-                        .onAppear{
-                            viewModel.fetchProducts()
-                        }
-                        .navigationDestination(for: Products.self, destination: {product in
-                            Text(product.description).padding(4)
+                                CategoryCard(productCategory: category)
+                            }
                             
-                        })
-                     VStack(alignment: .leading){
-                     
-                     AsyncImage(url: URL(string: myproduct.image)){ image in
-                     image
-                     .resizable()
-                     .aspectRatio(contentMode: .fill)
-                     } placeholder: {
-                     Image(systemName: "photo.fill")
-                     .resizable()
-                     .aspectRatio(contentMode: .fill)
-                     }
-                     
-                     HStack{
-                     
-                     Text("Name: ")
-                     Text(myproduct.category)
-                     
-                     }
-                     HStack{
-                     
-                     Text("Details: ")
-                     Text(myproduct.description)
-                     
-                     }
-                     HStack{
-                     
-                     Text("Status: ")
-                     Text("\(myproduct.price)")
-                     
-                     }
-                     }
-                     }
-                     
-                     }
-                    
-                    
-                    
-                }/*.searchable(text: $viewModel.searchProduct)
-                    .padding()
-                Text("Hello : \(authservice.user?.email ?? "Not")")
-                 
-                 Button("SignOut"){
-                 authservice.signOut()
-                 }*/
+                        
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle(Text("SpreadaSmile"))
+           /* .navigationDestination(for:ProductCategories.self, destination: {category in
+                CategoriesView(category: category)
                 
-            }.searchable(text: $viewModel.searchProduct)
-            .padding()
+            })*/
+            .toolbar {
+                NavigationLink {
+                    ShoppingCartView()
+                        .environmentObject(appViewModel)
+                } label: {
+                    CartButton(numberOfProducts: appViewModel.products.count)
+                }
+            }
+            
+        }.navigationViewStyle(StackNavigationViewStyle())
+               }
+               
         }
-}
+
 
 struct DummyView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,13 +8,45 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    @EnvironmentObject var appViewModel : AppViewModel
+    var category :ProductCategories
+    var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       
+        NavigationStack{
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(ProductCategories.productTrending, id: \.id) { category in
+                        NavigationLink(destination: HomeView(category: category)
+                            .environmentObject(appViewModel)){
+            
+                                CategoryCard(productCategory: category)
+                            }
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle(Text("SpreadaSmile"))
+            .navigationDestination(for:ProductCategories.self, destination: {category in
+                CategoriesView(category: category)
+                
+            })
+            .toolbar {
+                NavigationLink {
+                    ShoppingCartView()
+                        .environmentObject(appViewModel)
+                } label: {
+                    CartButton(numberOfProducts: appViewModel.products.count)
+                }
+            }
+            
+        }.navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 
 struct CategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView()
+        CategoriesView(category: ProductCategories(id: UUID(), name: "Gifts", image: "")).environmentObject(AppViewModel())
     }
 }

@@ -12,6 +12,9 @@ class ApiCallViewModel:ObservableObject{
     @Published var products: [Products] = []
     @Published var searchProduct: String = ""
     @Published var navPath = NavigationPath()
+    init(){
+        fetchProducts()
+    }
     var filteredProducts: [Products] {
             guard !searchProduct.isEmpty
         else {

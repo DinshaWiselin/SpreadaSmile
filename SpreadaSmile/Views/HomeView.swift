@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
     @StateObject var viewModel = ApiCallViewModel()
+    var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
+    var category :ProductCategories
     var body: some View {
        
         
@@ -17,13 +19,19 @@ struct HomeView: View {
             ZStack{
                 
                 List{
-                    ForEach(viewModel.filteredProducts , id: \.self){ product in
-                        SingleProduct(product: product)
-                            .onTapGesture {
-                                viewModel.navPath.append(product)
+                  // LazyVGrid(columns: columns, spacing: 1) {
+                        ForEach(viewModel.products , id: \.self){ product in
+                            
+                            if product.category == category.name
+                            {
+                                
+                                SingleProduct(product: product)
+                                    .onTapGesture {
+                                        viewModel.navPath.append(product)
+                                    }
                             }
-                    }
-                    
+                        }
+                 //  }
                 }
                 
                 .listStyle(.plain)
@@ -31,22 +39,20 @@ struct HomeView: View {
                 
                 .navigationTitle("SpreadaSmile")
                 
-                .onAppear{
-                    viewModel.fetchProducts()
-                }
-                
+            
                 .navigationDestination(for: Products.self, destination: {product in
-                    DummyView()
+                    GiftDetailsView(product: product)
                     
                 })
+                
             }
-            .searchable(text: $viewModel.searchProduct)
+          
             
         }
         }
     }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(FirebaseAuthService())
+        HomeView(category: ProductCategories(id: UUID(), name: "Jwellery", image: "")).environmentObject(FirebaseAuthService())
     }
 }

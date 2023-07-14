@@ -10,12 +10,14 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-         HomeView()
+         SmileSpreaderView()
                 .tabItem {
                     Text("Home")
+                    
                     Image(systemName: "house.circle.fill")
                 }.tag(1)
-          CategoriesView()
+            
+          DummyView()
                 .tabItem {
                     Text("Gifts")
                     Image(systemName: "gift.circle.fill")
@@ -25,7 +27,7 @@ struct MainView: View {
                     Text("Favorites")
                     Image(systemName: "heart.circle.fill")
                 }
-        }
+        }.accentColor(.purple)
     }
 }
 

@@ -15,3 +15,4 @@ struct Products : Codable,Hashable{
     
     static var dummyProduct = Products(id: 30,price: 145.00, category: "Jwellery", description: "pure gold", image: "yellow")
 }
+var dummyProduct1 = [Products(id: 30,price: 145.00, category: "Jwellery", description: "pure gold", image: "yellow")]
