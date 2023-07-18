@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var appViewModel = AppViewModel()
     var body: some View {
         TabView {
          SmileSpreaderView()
@@ -28,11 +29,12 @@ struct MainView: View {
                     Image(systemName: "heart.circle.fill")
                 }
         }.accentColor(.purple)
+            .environmentObject(appViewModel)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(AppViewModel())
     }
 }

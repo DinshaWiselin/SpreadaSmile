@@ -23,10 +23,11 @@ struct CategoryCard: View {
                         .frame(width: 180)
                         .scaledToFit()
                     
+                    
                     VStack{
                         Text(productCategory.name)
                             .bold()
-                        
+                            .foregroundColor(.purple)
                       /*  Text("\(product.price)$")
                             .font(.caption)*/
                     }

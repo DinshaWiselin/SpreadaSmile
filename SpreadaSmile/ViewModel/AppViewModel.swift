@@ -20,6 +20,7 @@ class AppViewModel:ObservableObject{
     
     func removeFromCart(product: Products) {
         products = products.filter { $0.id != product.id }
+        
         total -= Int(product.price)
     }
     /*func pay() {

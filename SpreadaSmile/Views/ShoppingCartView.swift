@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
-    @EnvironmentObject var appViewModel: AppViewModel
+    @EnvironmentObject var appViewModel : AppViewModel
+  
     var body: some View {
         ScrollView {
-            if appViewModel.paymentSuccess {
+            /*if appViewModel.paymentSuccess {
                 Text("Thanks for your purchase!  You'll also receive an email confirmation shortly.")
                     .padding()
-            } else {
+            } else {*/
                 if appViewModel.products.count > 0 {
                     ForEach(appViewModel.products, id: \.id) { product in
-                        ProductRow(product: product)
+                        ProductRow(product: product).onTapGesture {
+                            appViewModel.removeFromCart(product: product)
+                        }
+                        
                     }
                     
                     HStack {
@@ -34,7 +38,7 @@ struct ShoppingCartView: View {
                 } else {
                     Text("Your cart is empty.")
                 }
-            }
+           // }
         }
         .navigationTitle(Text("My Cart"))
         .padding(.top)

@@ -24,11 +24,9 @@ struct HomeView: View {
                             
                             if product.category == category.name
                             {
-                                
-                                SingleProduct(product: product)
-                                    .onTapGesture {
-                                        viewModel.navPath.append(product)
-                                    }
+                                NavigationLink(destination: GiftDetailsView(product: product), label:{
+                                    SingleProduct(product: product)
+                                })
                             }
                         }
                  //  }
@@ -40,10 +38,10 @@ struct HomeView: View {
                 .navigationTitle("SpreadaSmile")
                 
             
-                .navigationDestination(for: Products.self, destination: {product in
+                /*.navigationDestination(for: Products.self, destination: {product in
                     GiftDetailsView(product: product)
                     
-                })
+                })*/
                 
             }
           

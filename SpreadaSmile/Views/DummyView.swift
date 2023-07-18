@@ -10,7 +10,7 @@ import SwiftUI
 struct DummyView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
     //@StateObject var viewModel = ApiCallViewModel()
-    @StateObject var appViewModel = AppViewModel()
+    @EnvironmentObject var appViewModel : AppViewModel
        var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     var body: some View {
         NavigationStack{
@@ -50,6 +50,6 @@ struct DummyView: View {
 
 struct DummyView_Previews: PreviewProvider {
     static var previews: some View {
-        DummyView()
+        DummyView().environmentObject(AppViewModel())
     }
 }

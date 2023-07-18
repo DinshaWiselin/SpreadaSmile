@@ -14,10 +14,10 @@ struct SingleProduct: View {
                 Text(product.category)
                     .font(.title)
                     .bold()
-                   // .frame(width: 220,height: 80)
-               Text("\(product.price)")
-                    //.frame(width: 220,height: 80)
-            }
+                   .frame(width: 220,height: 80)
+                //Text("\(\(Double(format: "%.2f", product.price)))")
+                    .frame(width: 220,height: 80)
+            }.padding()
            AsyncImage(url: URL(string:product.image)) { phase in
                  switch phase{
                  case .empty:
@@ -33,7 +33,8 @@ struct SingleProduct: View {
                  Text("FAIL")
                  }
                  }
-           .clipShape(Circle())
+           .clipShape(Rectangle())
+            
                  //.overlay(alignment: .bottomTrailing) {
                /*  Text(article.source.name)
                  .font(.title)

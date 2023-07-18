@@ -17,23 +17,22 @@ struct ProductRow: View {
                        .aspectRatio(contentMode: .fit)
                        .frame(width: 50)
                        .cornerRadius(10)
-                   
+                   Spacer()
                    VStack(alignment: .leading, spacing: 10) {
+                       
                        Text(product.category)
                            .bold()
-
+                    
+                           
                        Text("$\(product.price)")
                    }
-                   
-                   Spacer()
+                   //Spacer()
 
-                   Image("Sweets")
+                  /* Image("Sweets")
                 .resizable()
                 .frame(width: 100,height: 100)
-                       .foregroundColor(Color(hue: 1.0, saturation: 0.89, brightness: 0.835))
-                       .onTapGesture {
-                           appViewModel.removeFromCart(product: product)
-                       }
+                       .foregroundColor(Color(hue: 1.0, saturation: 0.89, brightness: 0.835))*/
+                     
                }
                .padding(.horizontal)
                .frame(maxWidth: .infinity, alignment: .leading)
