@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    @EnvironmentObject var apiViewModel : ApiCallViewModel
     @EnvironmentObject var appViewModel : AppViewModel
     var category :ProductCategories
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
@@ -18,7 +19,7 @@ struct CategoriesView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(ProductCategories.productTrending, id: \.id) { category in
                         NavigationLink(destination: HomeView(category: category)
-                            .environmentObject(appViewModel)){
+                            .environmentObject(apiViewModel)){
             
                                 CategoryCard(productCategory: category)
                             }
@@ -47,6 +48,7 @@ struct CategoriesView: View {
 
 struct CategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView(category: ProductCategories(id: UUID(), name: "Gifts", image: "")).environmentObject(AppViewModel())
+        CategoriesView(category: ProductCategories(id: UUID(), name: "Gifts", image: "")).environmentObject(ApiCallViewModel())
+            .environmentObject(AppViewModel())
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GiftDetailsView: View {
     @EnvironmentObject var appViewModel : AppViewModel
+    @EnvironmentObject var apiViewModel : ApiCallViewModel
    // var shopName :ProductCategories
     var product:Products
     @State var numberofproducts = 0
@@ -52,7 +53,7 @@ struct GiftDetailsView: View {
                          .cornerRadius(10.0)
                          }*/
                         Button("Add to Cart") {
-                            appViewModel.addToCart(product: product)
+                            appViewModel.addToCart(product: ProductsCount(product: product))
                         }.font(.title3)
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
@@ -98,6 +99,10 @@ struct GiftDetailsView: View {
                 //.frame(maxHeight: .infinity, alignment: .bottom)
                 .edgesIgnoringSafeArea(.bottom)
                
+            }
+            .onAppear(){
+                apiViewModel.fetchProducts()
+                appViewModel.getCurrentProduct(id: product.id)
             }
             .navigationTitle("Your Gift")
             .toolbar {
@@ -153,9 +158,9 @@ struct DescriptionView: View {
             HStack {
                 //                        Minus Button
                 Button(action: {
-                   var myProduct = appViewModel.products.first(where : {$0.id == product.id})
+                  
                         
-                    myProduct?.decrement()
+                    appViewModel.myProduct.decrement()
                     
                 }) {
                     Image(systemName: "minus")
@@ -167,16 +172,16 @@ struct DescriptionView: View {
                     }
                 .frame(width: 30, height: 30)
                 .foregroundColor(.black)
-                Text("\(product.numberOfProducts)")
+                Text("\(appViewModel.myProduct.numberOfProducts)")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .padding(.horizontal, 8)
                                         
  //                        Plus Button
                 Button(action: {
-                    var myProduct = appViewModel.products.first(where : {$0.id == product.id})
+                   
                          
-                    myProduct?.increment()
+                    appViewModel.myProduct.increment()
                     
                 }) {
                                            
@@ -186,7 +191,7 @@ struct DescriptionView: View {
                      
                                         }
                 Spacer()
-                Text("\(product.price)")
+                Text("\(appViewModel.myProduct.product.price)")
                     .font(.title)
                     .foregroundColor(.white)
                                     }

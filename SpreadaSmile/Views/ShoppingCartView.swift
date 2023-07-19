@@ -16,8 +16,8 @@ struct ShoppingCartView: View {
                 Text("Thanks for your purchase!  You'll also receive an email confirmation shortly.")
                     .padding()
             } else {*/
-                if appViewModel.products.count > 0 {
-                    ForEach(appViewModel.products, id: \.id) { product in
+            if appViewModel.myProduct.numberOfProducts > 0 {
+                ForEach(appViewModel.products, id: \.self) { product in
                         ProductRow(product: product).onTapGesture {
                             appViewModel.removeFromCart(product: product)
                         }

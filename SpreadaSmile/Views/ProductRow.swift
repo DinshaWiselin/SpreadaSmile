@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ProductRow: View {
     @EnvironmentObject var appViewModel:AppViewModel
-        var product: Products
+        var product: ProductsCount
     var body: some View {
         HStack(spacing: 20) {
-                   Image(product.image)
+            Image(product.product.image)
                        .resizable()
                        .aspectRatio(contentMode: .fit)
                        .frame(width: 50)
@@ -20,11 +20,11 @@ struct ProductRow: View {
                    Spacer()
                    VStack(alignment: .leading, spacing: 10) {
                        
-                       Text(product.category)
+                       Text(product.product.category)
                            .bold()
                     
                            
-                       Text("$\(product.price)")
+                       Text("$\(product.product.price)")
                    }
                    //Spacer()
 
@@ -41,6 +41,12 @@ struct ProductRow: View {
 
 struct ProductRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRow(product:dummyProduct1[0])
+        ProductRow(product:ProductsCount(product:dummyProduct1[0],numberOfProducts: 1))
     }
 }
+
+
+
+
+
+

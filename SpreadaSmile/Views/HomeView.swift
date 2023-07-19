@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
-    @StateObject var viewModel = ApiCallViewModel()
+    @EnvironmentObject var viewModel : ApiCallViewModel
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     var category :ProductCategories
     var body: some View {
@@ -51,6 +51,8 @@ struct HomeView: View {
     }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(category: ProductCategories(id: UUID(), name: "Jwellery", image: "")).environmentObject(FirebaseAuthService())
+        HomeView(category: ProductCategories(id: UUID(), name: "Jwellery", image: ""))
+            .environmentObject(FirebaseAuthService())
+            .environmentObject(ApiCallViewModel())
     }
 }

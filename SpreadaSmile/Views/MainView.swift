@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var appViewModel = AppViewModel()
+    
+   
     var body: some View {
         TabView {
          SmileSpreaderView()
@@ -29,7 +30,7 @@ struct MainView: View {
                     Image(systemName: "heart.circle.fill")
                 }
         }.accentColor(.purple)
-            .environmentObject(appViewModel)
+          
     }
 }
 

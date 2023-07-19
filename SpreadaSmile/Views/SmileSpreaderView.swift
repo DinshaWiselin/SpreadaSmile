@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SmileSpreaderView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
-    @StateObject var viewModel = ApiCallViewModel()
+    @EnvironmentObject var viewModel : ApiCallViewModel
     @EnvironmentObject var appViewModel : AppViewModel
     @State var random : Int = 0
     var body: some View {
@@ -80,7 +80,8 @@ struct SmileSpreaderView: View {
 
 struct SmileSpreaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SmileSpreaderView()
+        SmileSpreaderView().environmentObject(AppViewModel())
+            .environmentObject(ApiCallViewModel())
     }
 }
 struct AppBarView: View {
