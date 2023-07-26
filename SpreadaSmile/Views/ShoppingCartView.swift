@@ -6,6 +6,7 @@
 import SwiftUI
 struct ShoppingCartView: View {
   @EnvironmentObject var appViewModel : AppViewModel
+
   var body: some View {
     ScrollView {
       /*if appViewModel.paymentSuccess {
@@ -21,12 +22,14 @@ struct ShoppingCartView: View {
           HStack {
             Text("Your cart total is")
             Spacer()
-            Text("$\(appViewModel.total).00")
+              Text("$\(String(format: " %.2f", appViewModel.total))")
+          //  Text("$\(appViewModel.total).00")
               .bold()
           }
           .padding()
           /*PaymentButton(action: appViewModel.pay)
            .padding()*/
+          
         } else {
           Text("Your cart is empty.")
         }
@@ -43,7 +46,7 @@ struct ShoppingCartView: View {
 }
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
-    ShoppingCartView()
+      ShoppingCartView()
       .environmentObject(AppViewModel())
   }
 }

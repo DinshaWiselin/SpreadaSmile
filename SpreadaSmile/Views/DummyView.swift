@@ -35,7 +35,7 @@ struct DummyView: View {
             })*/
             .toolbar {
                 NavigationLink {
-                    ShoppingCartView()
+                    ShoppingCartView(name: .constant("Dinsha"), street: .constant("Ghandi Street"), houseNo: .constant(30), city: .constant("SPandau"), pin: .constant("629809"))
                         .environmentObject(appViewModel)
                 } label: {
                     CartButton(numberOfProducts: appViewModel.products.count)

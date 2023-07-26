@@ -5,6 +5,8 @@
 // Created by Dinsha Wiselin Christudhas on 28.06.23.
 //
 import Foundation
+import Firebase
+
 struct Products : Codable,Hashable{
   var id : Int
   var price : Double
@@ -12,6 +14,8 @@ struct Products : Codable,Hashable{
   var description :String
   var image : String
   var numberOfProducts:Int? = 1
+   
+    
   mutating func increment(){
     self.numberOfProducts = (self.numberOfProducts ?? 1) + 1
   }

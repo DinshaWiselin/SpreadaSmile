@@ -120,7 +120,7 @@ struct DescriptionView: View {
            .padding(.all, 8)
                     }
         Spacer()
-        Text("\(product.price)")
+        Text("$\(String(format: "%.2f", product.price))")
           .font(.title)
           .foregroundColor(.white)
                   }

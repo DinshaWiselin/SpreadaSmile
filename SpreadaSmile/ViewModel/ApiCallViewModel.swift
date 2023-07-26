@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 class ApiCallViewModel:ObservableObject{
    // var apikey = ""
     @Published var products: [Products] = []
