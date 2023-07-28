@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct SingleProduct: View {
-    var product:Products
+    var product:Product
     var body: some View {
         HStack(alignment:.center){
             VStack{
@@ -51,7 +51,7 @@ struct SingleProduct: View {
 
 struct SingleProduct_Previews: PreviewProvider {
     static var previews: some View {
-        SingleProduct(product:Products.dummyProduct)
+        SingleProduct(product:Product.dummyProduct)
     }
 }
 

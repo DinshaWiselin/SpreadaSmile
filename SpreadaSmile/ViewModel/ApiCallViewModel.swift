@@ -10,13 +10,17 @@ import SwiftUI
 import Firebase
 class ApiCallViewModel:ObservableObject{
    // var apikey = ""
-    @Published var products: [Products] = []
+    @Published var products: [Product] = []
     @Published var searchProduct: String = ""
     @Published var navPath = NavigationPath()
+    @Published  var highLighted :[Product] = []
+    @Published var isReady = false
+    var isAnimated = true
+    @Published var random = 0
     init(){
         fetchProducts()
     }
-    var filteredProducts: [Products] {
+    var filteredProducts: [Product] {
             guard !searchProduct.isEmpty
         else {
                 return products
@@ -50,10 +54,23 @@ class ApiCallViewModel:ObservableObject{
                     }
             //MARK: SCHRITT 3: DATEN DECODEN
             do{
-                let productFeed = try JSONDecoder().decode([Products].self, from: data)
+                let productFeed = try JSONDecoder().decode([Product].self, from: data)
                 DispatchQueue.main.async {
                    self.products = productFeed
-                    print(self.products)
+                   
+                        print(self.products)
+                        self.highLighted = {
+                            guard !self.isAnimated
+                            else{
+                                return self.products
+                            }
+                            return self.products.filter{ product in
+                                product.price <= 15.00
+                            }
+                        }()
+                    self.random = Int.random(in: 0..<self.products.count)
+                    self.isReady = true
+                    
                 }
             }
             catch{

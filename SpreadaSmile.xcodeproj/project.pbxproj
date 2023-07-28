@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F2C3ABF2A4C3931003495F2 /* ApiCallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3ABE2A4C3931003495F2 /* ApiCallViewModel.swift */; };
-		0F2C3AC22A4C3AD2003495F2 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3AC12A4C3AD2003495F2 /* Products.swift */; };
+		0F2C3AC22A4C3AD2003495F2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3AC12A4C3AD2003495F2 /* Product.swift */; };
 		0F2C3AC42A4C7276003495F2 /* ProductsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3AC32A4C7276003495F2 /* ProductsFeed.swift */; };
 		0F2C3AD92A52F413003495F2 /* SingleProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3AD82A52F413003495F2 /* SingleProduct.swift */; };
 		0F2C3ADB2A52F467003495F2 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C3ADA2A52F467003495F2 /* ImageView.swift */; };
@@ -16,7 +16,7 @@
 		0F2DF3D12A4AD77B00C01FAA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DF3D02A4AD77B00C01FAA /* HomeView.swift */; };
 		0F2DF3D52A4ADB0500C01FAA /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DF3D42A4ADB0500C01FAA /* SignInView.swift */; };
 		0F2DF3D72A4AEE9A00C01FAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F2DF3D62A4AEE9A00C01FAA /* GoogleService-Info.plist */; };
-		0FA404CD2A4A93C5007C206C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FA404CC2A4A93C5007C206C /* GoogleService-Info.plist */; };
+		0F346EA22A7145A300290928 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F346EA12A7145A300290928 /* FirebaseFirestore */; };
 		0FA404D12A4A95B5007C206C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA404D02A4A95B5007C206C /* FirebaseAuth */; };
 		0FA404D42A4A97C7007C206C /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA404D32A4A97C7007C206C /* FirebaseAuthService.swift */; };
 		0FA6AC0A2A580AD300F43773 /* DeliveryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6AC092A580AD300F43773 /* DeliveryDetailsView.swift */; };
@@ -61,7 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0F2C3ABE2A4C3931003495F2 /* ApiCallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCallViewModel.swift; sourceTree = "<group>"; };
-		0F2C3AC12A4C3AD2003495F2 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		0F2C3AC12A4C3AD2003495F2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0F2C3AC32A4C7276003495F2 /* ProductsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFeed.swift; sourceTree = "<group>"; };
 		0F2C3AD82A52F413003495F2 /* SingleProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleProduct.swift; sourceTree = "<group>"; };
 		0F2C3ADA2A52F467003495F2 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		0F2DF3D62A4AEE9A00C01FAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FA404CA2A495383007C206C /* SpreadaSmile PflichtHeft.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpreadaSmile PflichtHeft.pages"; path = "../../SpreadaSmile PflichtHeft.pages"; sourceTree = "<group>"; };
 		0FA404CB2A49538A007C206C /* SpreadaSmile PflichtHeft.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpreadaSmile PflichtHeft.pages"; path = "../SpreadaSmile PflichtHeft.pages"; sourceTree = "<group>"; };
-		0FA404CC2A4A93C5007C206C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FA404D32A4A97C7007C206C /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		0FA6AC092A580AD300F43773 /* DeliveryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsView.swift; sourceTree = "<group>"; };
 		0FA6AC0B2A580B1300F43773 /* ShoppingCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartView.swift; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA404D12A4A95B5007C206C /* FirebaseAuth in Frameworks */,
+				0F346EA22A7145A300290928 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 		0F2C3AC02A4C3959003495F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0F2C3AC12A4C3AD2003495F2 /* Products.swift */,
+				0F2C3AC12A4C3AD2003495F2 /* Product.swift */,
 				0F2C3AC32A4C7276003495F2 /* ProductsFeed.swift */,
 				0FB9BCC82A5E849600F280B4 /* ProductCategories.swift */,
 				0FB9BCCA2A5E85C400F280B4 /* TrendingCategories.swift */,
@@ -168,6 +168,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0F346EA02A7145A300290928 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0FA404D22A4A97A9007C206C /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +192,7 @@
 				0FBD7E4F2A44418C0001A76E /* SpreadaSmileTests */,
 				0FBD7E592A44418C0001A76E /* SpreadaSmileUITests */,
 				0FBD7E3D2A44418B0001A76E /* Products */,
+				0F346EA02A7145A300290928 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,7 +243,6 @@
 				0FBD7E5A2A44418C0001A76E /* SpreadaSmileUITests.swift */,
 				0FBD7E5C2A44418C0001A76E /* SpreadaSmileUITestsLaunchTests.swift */,
 				0FA404CA2A495383007C206C /* SpreadaSmile PflichtHeft.pages */,
-				0FA404CC2A4A93C5007C206C /* GoogleService-Info.plist */,
 			);
 			path = SpreadaSmileUITests;
 			sourceTree = "<group>";
@@ -258,6 +265,7 @@
 			name = SpreadaSmile;
 			packageProductDependencies = (
 				0FA404D02A4A95B5007C206C /* FirebaseAuth */,
+				0F346EA12A7145A300290928 /* FirebaseFirestore */,
 			);
 			productName = SpreadaSmile;
 			productReference = 0FBD7E3C2A44418B0001A76E /* SpreadaSmile.app */;
@@ -367,7 +375,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA404CD2A4A93C5007C206C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +398,7 @@
 				0FB9BCD12A5E9ACC00F280B4 /* AppViewModel.swift in Sources */,
 				0FB381372A60032A00075D0F /* SmileSpreaderView.swift in Sources */,
 				0F2DF3D12A4AD77B00C01FAA /* HomeView.swift in Sources */,
-				0F2C3AC22A4C3AD2003495F2 /* Products.swift in Sources */,
+				0F2C3AC22A4C3AD2003495F2 /* Product.swift in Sources */,
 				0FB9BCCB2A5E85C400F280B4 /* TrendingCategories.swift in Sources */,
 				0FA404D42A4A97C7007C206C /* FirebaseAuthService.swift in Sources */,
 				0FBF16AF2A56B6B2001C3A2E /* CategoriesView.swift in Sources */,
@@ -734,6 +741,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F346EA12A7145A300290928 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FA404CF2A4A95B5007C206C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		0FA404D02A4A95B5007C206C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FA404CF2A4A95B5007C206C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

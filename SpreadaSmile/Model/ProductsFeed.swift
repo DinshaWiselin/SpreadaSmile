@@ -7,7 +7,7 @@
 
 import Foundation
 struct ProductsFeed:Codable{
-    var products : [Products]
+    var products : [Product]
     
     //static var dummyProductsFeed = ProductsFeed(products:[Products.dummyProduct])
 }

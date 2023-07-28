@@ -8,7 +8,7 @@ struct GiftDetailsView: View {
   @EnvironmentObject var appViewModel : AppViewModel
   @EnvironmentObject var apiViewModel : ApiCallViewModel
   // var shopName :ProductCategories
-  @State var product:Products
+  @State var product:Product
   @State var numberofproducts = 0
   var body: some View {
     NavigationStack{
@@ -57,131 +57,144 @@ struct GiftDetailsView: View {
           CartButton(numberOfProducts: appViewModel.products.count)
         }
       }
+    }.onAppear{
+        appViewModel.listenProducts()
     }
   }
 }
 struct GiftDetailsView_Previews: PreviewProvider {
   static var previews: some View {
-    GiftDetailsView(product: Products.dummyProduct)
+    GiftDetailsView(product: Product.dummyProduct)
       .environmentObject(AppViewModel())
   }
 }
 struct DescriptionView: View {
   @EnvironmentObject var appViewModel : AppViewModel
-  @State var product:Products
-  var body: some View {
-    VStack (alignment: .leading) {
-      //        Title
-    
-        
-       // Spacer()
-      Text(product.category)
-        .font(.title)
-        .fontWeight(.bold)
-      //        Rating
-      HStack (spacing: 4) {
-        ForEach(0 ..< 5) { item in
-          Image(systemName: "star")
-        }
-        Text("(4.9)")
-          .opacity(0.5)
-          .padding(.leading, 8)
-        Spacer()
-      }
-      Text("Description")
-        .fontWeight(.medium)
-        .padding(.vertical, 8)
-      Text(product.description)
-        .lineSpacing(8.0)
-        .opacity(0.6)
-  //        Info
-      HStack {
-        //            Minus Button
-        Button(action: {
-          product.decrement()
-          appViewModel.myProduct = product
-        }) {
-          Image(systemName: "minus")
-            .padding(.all, 8)
-          }
-        .frame(width: 30, height: 30)
-        .foregroundColor(.black)
-        Text("\(product.numberOfProducts ?? 1)")
-          .font(.title2)
-          .fontWeight(.semibold)
-          .padding(.horizontal, 8)
- //            Plus Button
-        Button(action: {
-          product.increment()
-          appViewModel.myProduct = product
-        }) {
-         Image(systemName: "plus")
-           .foregroundColor(.black)
-           .padding(.all, 8)
-                    }
-        Spacer()
-        Text("$\(String(format: "%.2f", product.price))")
-          .font(.title)
-          .foregroundColor(.white)
-                  }
-      VStack{
-        /* Button(action:appViewModel.addToCart(product: product)){
-         Label("Add to Cart")
-         .font(.title3)
-         .fontWeight(.semibold)
-         .foregroundColor(.black)
-         .padding()
-         .padding(.horizontal, 8)
-         .background(Color.purple)
-         .cornerRadius(10.0)
-         }*/
-        Button("Add to Cart") {
-          appViewModel.myProduct = product
-          if appViewModel.myProduct.numberOfProducts == nil{
-            appViewModel.myProduct.numberOfProducts = 1
-          }
-          appViewModel.addToCart(product: appViewModel.myProduct)
-        }.font(.title3)
-          .fontWeight(.semibold)
-          .foregroundColor(.black)
-          .padding()
-          .padding(.horizontal, 8)
-          .background(Color.purple)
-          .cornerRadius(10.0)
-        Button("Buy Now") {
-          // PaymentButtonView()
-        } .font(.title3)
-          .fontWeight(.semibold)
-          .foregroundColor(.black)
-          .padding()
-          .padding(.horizontal, 8)
-          .background(Color.purple)
-          .cornerRadius(10.0)
-        /* Text("Add to Cart")
-         .font(.title3)
-         .fontWeight(.semibold)
-         .foregroundColor(.black)
-         .padding()
-         .padding(.horizontal, 8)
-         .background(Color.purple)
-         .cornerRadius(10.0)
-         Text("Buy Now")
-         .font(.title3)
-         .fontWeight(.semibold)
-         .foregroundColor(.black)
-         .padding()
-         .padding(.horizontal, 8)
-         .background(Color.purple)
-         .cornerRadius(10.0)*/
-      }
-     
+  @State var product:Product
+    var body: some View {
+        VStack (alignment: .leading) {
+            //        Title
+            
+            
+            // Spacer()
+            Text(product.category)
+                .font(.title)
+                .fontWeight(.bold)
+            //        Rating
+            HStack (spacing: 4) {
+                ForEach(0 ..< 5) { item in
+                    Image(systemName: "star")
+                }
+                Text("(4.9)")
+                    .opacity(0.5)
+                    .padding(.leading, 8)
+                Spacer()
             }
-    .padding()
-    .padding(.top)
-    .background(.purple)
-    .cornerRadius(30)
-    .offset(x: 0, y: -30.0)
-              }
+            
+            Text(product.shopName ?? "Shop Name and Address")
+                .onAppear{product.getShop()}
+                .bold()
+                .font(.title2)
+                .foregroundColor(.black)
+            
+            
+            
+            Text("Description")
+                .fontWeight(.medium)
+                .padding(.vertical, 8)
+            Text(product.description)
+                .lineSpacing(8.0)
+                .opacity(0.6)
+            //        Info
+            HStack {
+                //            Minus Button
+                Button(action: {
+                    product.decrement()
+                    appViewModel.myProduct = product
+                }) {
+                    Image(systemName: "minus")
+                        .padding(.all, 8)
+                }
+                .frame(width: 30, height: 30)
+                .foregroundColor(.black)
+                Text("\(product.numberOfProduct ?? 1)")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 8)
+                //            Plus Button
+                Button(action: {
+                    product.increment()
+                    appViewModel.myProduct = product
+                }) {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                        .padding(.all, 8)
+                }
+                Spacer()
+                Text("$\(String(format: "%.2f", product.price))")
+                    .font(.title)
+                    .foregroundColor(.white)
+            }
+        }
+        .padding()
+        .padding(.top)
+        .background(.purple)
+        .cornerRadius(30)
+        .offset(x: 0, y: -30.0)
+        VStack{
+            /* Button(action:appViewModel.addToCart(product: product)){
+             Label("Add to Cart")
+             .font(.title3)
+             .fontWeight(.semibold)
+             .foregroundColor(.black)
+             .padding()
+             .padding(.horizontal, 8)
+             .background(Color.purple)
+             .cornerRadius(10.0)
+             }*/
+            Button("Add to Cart") {
+                appViewModel.myProduct = product
+                if appViewModel.myProduct.numberOfProduct == nil{
+                    appViewModel.myProduct.numberOfProduct = 1
+                }
+                appViewModel.addToCart(product: appViewModel.myProduct)
+            }.font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(.black)
+                .padding()
+                .padding(.horizontal, 8)
+                .background(Color.purple)
+                .cornerRadius(10.0)
+            /*Button("Buy Now") {
+             // PaymentButtonView()
+             } .font(.title3)
+             .fontWeight(.semibold)
+             .foregroundColor(.black)
+             .padding()
+             .padding(.horizontal, 8)
+             .background(Color.purple)
+             .cornerRadius(10.0)*/
+            
+            /* Text("Add to Cart")
+             .font(.title3)
+             .fontWeight(.semibold)
+             .foregroundColor(.black)
+             .padding()
+             .padding(.horizontal, 8)
+             .background(Color.purple)
+             .cornerRadius(10.0)
+             Text("Buy Now")
+             .font(.title3)
+             .fontWeight(.semibold)
+             .foregroundColor(.black)
+             .padding()
+             .padding(.horizontal, 8)
+             .background(Color.purple)
+             .cornerRadius(10.0)*/
+        }
+        
+        
+    }
             }
 
 

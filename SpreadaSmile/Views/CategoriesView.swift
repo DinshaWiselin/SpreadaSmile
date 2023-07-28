@@ -41,8 +41,11 @@ struct CategoriesView: View {
                 }
             }
             
-        }.navigationViewStyle(StackNavigationViewStyle())
-        
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear{
+            appViewModel.listenProducts()
+        }
     }
 }
 

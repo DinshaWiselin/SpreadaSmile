@@ -1,7 +1,7 @@
 import SwiftUI
 struct ProductRow: View {
   @EnvironmentObject var appViewModel:AppViewModel
-    var product: Products
+    var product: Product
   var body: some View {
     HStack(spacing: 20) {
      AsyncImage(url: URL(string:product.image))
@@ -10,7 +10,7 @@ struct ProductRow: View {
             .cornerRadius(10)
           Spacer()
           VStack(alignment: .leading, spacing: 10) {
-            Text("\(product.numberOfProducts ?? 1) x")
+            Text("\(product.numberOfProduct ?? 1) x")
             Text(product.category)
               .bold()
             Text("$\(product.price)")

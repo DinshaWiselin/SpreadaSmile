@@ -11,7 +11,7 @@ struct SmileSpreaderView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
     @EnvironmentObject var viewModel : ApiCallViewModel
     @EnvironmentObject var appViewModel : AppViewModel
-    @State var random : Int = 0
+   
     var body: some View {
         NavigationStack{
             VStack{
@@ -24,30 +24,26 @@ struct SmileSpreaderView: View {
                     .font(.subheadline)
                     .foregroundColor(.purple)
                 Spacer()
+                Button("Next image") {
+                      // self.random = Int.random(in: 0..<viewModel.highLighted.count)
+                   }
                 ZStack{
-                   Circle()
+                    Circle()
                         .stroke()
-                       .frame(width:250 ,height: 250)
+                        .frame(width:250 ,height: 250)
                     
                         .foregroundColor(.purple)
+                    if $viewModel.isReady.wrappedValue{
+                        
+                        Image(viewModel.highLighted[viewModel.random].image)
+                            .resizable()
+                            .scaledToFit()
+                        
+                    }
                     
                 }
-               /* VStack {
-                           HStack {
-                               Spacer()
-                               Text(viewModel.products[self.random].category)
-                                   .background(Color.white)
-                               Spacer()
-                               Button("Next image") {
-                                   self.random = Int.random(in: 0..<3)
-                               }
-                               Spacer()
-                           }
+                 
 
-                    Image(viewModel.products[self.random].image)
-                           .resizable()
-                           .scaledToFit()
-                       }*/
                 Spacer()
                 HStack(){
                     Spacer()
@@ -68,12 +64,16 @@ struct SmileSpreaderView: View {
             }
             .toolbar {
                 NavigationLink {
-                    ShoppingCartView(name: .constant("Dinsha"), street: .constant("Ghandi Street"), houseNo: .constant(30), city: .constant("SPandau"), pin: .constant("629809"))
+                    ShoppingCartView()
                         .environmentObject(appViewModel)
                 } label: {
                     CartButton(numberOfProducts: appViewModel.products.count)
                 }
             }
+        }.onAppear{
+            appViewModel.listenProducts()
+            //viewModel.isReady.toggle()
+           // self.random = Int.random(in: 0..<viewModel.highLighted.count)
         }
     }
 }
