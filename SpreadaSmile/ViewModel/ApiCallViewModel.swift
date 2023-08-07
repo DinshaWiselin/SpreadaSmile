@@ -14,10 +14,10 @@ class ApiCallViewModel:ObservableObject{
   @Published var searchProduct: String = ""
   @Published var navPath = NavigationPath()
   @Published var isReady = false
-  var isAnimated = true
-  @Published var random = 0
+  var isAnimated = false
+ //@Published var random = 0
   var highLighted: [Product] {
-    guard !self.isAnimated else {
+      guard !self.isAnimated else {
       return self.products
     }
     return self.products.filter { product in
@@ -66,7 +66,7 @@ class ApiCallViewModel:ObservableObject{
           
           //print(self.products)
              
-          self.random = Int.random(in: 0..<self.highLighted.count)
+        // self.random = Int.random(in: 0..<self.highLighted.count)
           self.isReady = true
            
         }

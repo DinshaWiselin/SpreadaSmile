@@ -39,37 +39,43 @@ struct ShoppingCartView: View {
             VStack{
                 Text("Please enter your Delivery details")
                     .font(.title2)
+                   
                     .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
                 TextField("Name", text: $name)
+                    
                     .textFieldStyle(.roundedBorder)
                     .padding(.top,10)
-                    .foregroundColor(.purple)
+    
                     .shadow(radius: 3)
                 TextField("StreetName", text: $street)
                     .textFieldStyle(.roundedBorder)
                    .padding(.top,8)
-                    .foregroundColor(.purple)
+                    
                     .shadow(radius: 3)
                 TextField("HouseNo", text: $houseNo)
                     .textFieldStyle(.roundedBorder)
                     .padding(.top,8)
-                    .foregroundColor(.purple)
+                    
                     .shadow(radius: 3)
                 TextField("City", text: $city)
                     .textFieldStyle(.roundedBorder)
                     .padding(.top,8)
-                    .foregroundColor(.purple)
+                   
                     .shadow(radius: 3)
                 TextField("PinCode", text: $pin)
                     .textFieldStyle(.roundedBorder)
                     .padding(.top,8)
-                    .foregroundColor(.purple)
+                    
                     .shadow(radius: 3)
                 DatePicker(selection: $date,
-                           label: { Text("Delivery Date") })
+                           label: { Text("Delivery Date").padding(.horizontal,8)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+
+                })
                 
                 .padding(.top,8)
-                //.foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                
                 .shadow(radius: 3)
                 
             }
@@ -104,9 +110,8 @@ struct ShoppingCartView: View {
         }
       // }
     }
-    .navigationTitle(Text("My Cart"))
-    .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
-    .padding(.top)
+    .navigationTitle("My Cart")
+     .padding(.top)
      .onDisappear {
      if appViewModel.paymentSuccess {
      appViewModel.paymentSuccess = false

@@ -9,7 +9,7 @@ struct SmileSpreaderView: View {
   @EnvironmentObject var authservice : FirebaseAuthService
   @EnvironmentObject var viewModel : ApiCallViewModel
   @EnvironmentObject var appViewModel : AppViewModel
-  
+   @State var random = 0
   var body: some View {
     NavigationStack{
       VStack{
@@ -34,7 +34,8 @@ struct SmileSpreaderView: View {
             .foregroundColor(.purple)*/
           if $viewModel.isReady.wrappedValue{
               ZStack{
-                  AsyncImage(url: URL(string:viewModel.highLighted[viewModel.random].image))
+                  
+                  AsyncImage(url: URL(string:viewModel.highLighted[random].image))
                   { phase in
                        switch phase{
                        case .empty:
@@ -75,10 +76,13 @@ struct SmileSpreaderView: View {
            
         }
           Spacer()
+          Text("\(viewModel.highLighted.count)")
+          Text("\(random)")
           Button(action: {
               // What to perform
-              viewModel.random = Int.random(in: 0..<viewModel.highLighted.count)
-
+             // viewModel.isAnimated = true
+              self.random = Int.random(in: 0..<viewModel.highLighted.count)
+                
           }) {
              
              Text("Next Gift")

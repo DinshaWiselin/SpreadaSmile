@@ -66,7 +66,7 @@ struct GiftDetailsView: View {
         //.frame(maxHeight: .infinity, alignment: .bottom)
         .edgesIgnoringSafeArea(.bottom)*/
       }
-      //.navigationTitle("Your Gift")
+      .navigationTitle("Your Gift")
       .toolbar {
         /* Image(systemName: "heart.fill")
           .foregroundColor(.purple)*/
