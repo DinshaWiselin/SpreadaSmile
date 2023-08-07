@@ -16,10 +16,10 @@ struct ProductCategories: Identifiable,Hashable {
                              ProductCategories(name: "", image: ""),
                              ProductCategories(name: "", image: ""),
                              ProductCategories(name: "", image: "")]
-    static var productTrending = [ProductCategories(name: "jewelery", image: "jewelry"),
-                                  ProductCategories(name: "men's clothing", image: "Men wear"),
+    static var productTrending = [ProductCategories(name: "jewelery", image: "jewells"),
+                                  ProductCategories(name: "men's clothing", image: "Mens Wear"),
                                   ProductCategories(name: "electronics", image: "electronics"),
-                                  ProductCategories(name: "women's clothing", image: "women's wear")]
+                                  ProductCategories(name: "women's clothing", image: "frauen kleider")]
     static var productCategory = [ProductCategories(name: "Trending Gifts", image: "Trend"),
                            ProductCategories(name: "Personalised", image: "Persnal"),
                            ProductCategories(name: "Flowers", image: "Flowers"),

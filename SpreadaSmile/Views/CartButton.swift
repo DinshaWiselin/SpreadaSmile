@@ -14,7 +14,7 @@ struct CartButton: View {
         ZStack(alignment: .topTrailing) {
             Image(systemName: "cart")
                 .padding(.top, 5)
-                .foregroundColor(.purple)
+                 .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
             if numberOfProducts > 0 {
                 Text("\(numberOfProducts)")
                     .font(.caption2).bold()

@@ -18,13 +18,13 @@ struct Product : Codable,Hashable{
     mutating func getShop(){
         switch self.category {
       case "jewelery":
-          self.shopName = "Maha Jwellery, 2nd Street, Chennai"
+          self.shopName = "Maha Jwellery, 15454, Chennai"
       case "men's clothing":
-            self.shopName = "Shopify, 16761, Spandau"
+            self.shopName = "Shopify Textiles, 16761, Spandau"
       case "women's clothing":
-            self.shopName = "Women's world, 36095, Belrin"
+            self.shopName = "Women's world, 36095, Berlin"
       case "electronics":
-            self.shopName = "Trend Electro, 166622, Kreusberg"
+            self.shopName = "Trend Electro, 16662, Kreusberg"
       default:
             self.shopName = "Nothing"
       }
@@ -36,7 +36,7 @@ struct Product : Codable,Hashable{
   mutating func decrement(){
     self.numberOfProduct = (self.numberOfProduct ?? 1) - 1
   }
-  static var dummyProduct = Product(id: 30,price: 145.00, category: "Jwellery", description: "pure gold", image: "yellow")
+  static var dummyProduct = Product(id: 30,price: 145.00, category: "Jwellery", description: "pure gold", image: "Sweets")
 }
 var dummyProduct1 = [Product(id: 30,price: 145.00, category: "Jwellery", description: "pure gold", image: "yellow")]
 

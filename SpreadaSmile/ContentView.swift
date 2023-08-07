@@ -20,7 +20,7 @@ struct ContentView: View {
         }.onAppear{
             authService.listentoAuthState()
         }
-        
+       // .accentColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
     }
 }
 

@@ -29,7 +29,7 @@ struct MainView: View {
                     Text("Favorites")
                     Image(systemName: "heart.circle.fill")
                 }
-        }.accentColor(.purple)
+        }.accentColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
           
     }
 }

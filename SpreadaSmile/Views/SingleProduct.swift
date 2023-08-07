@@ -9,31 +9,44 @@ import SwiftUI
 struct SingleProduct: View {
     var product:Product
     var body: some View {
-        HStack(alignment:.center){
+        
+        HStack{
+           // Spacer()
             VStack{
+               
                 Text(product.category)
-                    .font(.title)
-                    .bold()
-                   .frame(width: 220,height: 80)
-                //Text("\(\(Double(format: "%.2f", product.price)))")
-                    .frame(width: 220,height: 80)
-            }.padding()
-           AsyncImage(url: URL(string:product.image)) { phase in
+                    .font(.headline)
+                    //.bold()
+                   .frame(width: 200,height: 20)
+                   .foregroundColor(.white)
+                  // .padding(.leading,30)
+              Text("$\(String(format: " %.2f", product.price))")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 200,height: 20)
+                   // .padding(.bottom,60)
+            }.padding(.leading,30)
+            //.padding()
+            AsyncImage(url: URL(string:product.image)) { phase in
                  switch phase{
                  case .empty:
                  ProgressView()
                  case .success(let resultImage):
                  resultImage
+                         
                  .resizable()
-                 .frame(width: 150, height: 150)
+                 .frame(width: 140, height: 140)
+                 //.scaledToFit()
+                 .aspectRatio(contentMode: .fit)
                  .cornerRadius(10)
+                 .padding(.trailing,65)
                  case .failure(_):
-                 Image(systemName: "exclamationmark.transmission")
+                 Image("Sweets")
                  @unknown default:
                  Text("FAIL")
                  }
                  }
-           .clipShape(Rectangle())
+         //  .clipShape(Rectangle())
             
                  //.overlay(alignment: .bottomTrailing) {
                /*  Text(article.source.name)
@@ -43,8 +56,12 @@ struct SingleProduct: View {
               
                // Divider()
             }
-            
         
+        .frame(width:350 ,height: 150)
+        .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+        .shadow(color: Color.black.opacity(0.3), radius: 15, x: 0, y: 10)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(.horizontal,10)
         }
     //}
 }

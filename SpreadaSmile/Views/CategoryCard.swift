@@ -18,26 +18,29 @@ struct CategoryCard: View {
                   
                     Image(productCategory.image)
                         .resizable()
-                        .clipShape(Circle())
-                        //.cornerRadius(20)
+                       // .scaledToFill()
+                        //.aspectRatio(contentMode: .fill)
+                       // .clipShape(Circle())
+                        .cornerRadius(20)
                         .frame(width: 180)
-                        .scaledToFit()
-                    
+                       // .scaledToFit()
+                        .clipped()
                     
                     VStack{
                         Text(productCategory.name)
                             .bold()
-                            .foregroundColor(.purple)
+                            .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
                       /*  Text("\(product.price)$")
                             .font(.caption)*/
                     }
                     .padding()
-                    .frame(width: 180, alignment: .center)
+                    .frame(width: 180,height: 40, alignment: .center)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(20)
+                    .cornerRadius(10)
+                    
                 }
                 .frame(width: 180, height: 250)
-                .shadow(radius: 3)
+                .shadow(color:/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/,radius: 3)
                 
                /* Button {
                     cartManager.addToCart(product: product)
