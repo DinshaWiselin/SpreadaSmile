@@ -19,8 +19,9 @@ struct DeliveryDetailsView: View {
    // @Binding private var date : Date
     var body: some View {
         VStack{
-            Text("Tittle to search")
+            Text("Your gift will be delivered soon...")
                 .font(.title)
+                .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
             HStack{
                 VStack{
                     
@@ -32,11 +33,16 @@ struct DeliveryDetailsView: View {
                     Text(pin)
                 } .padding(15)
                     //.padding(.top,15)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                    .foregroundColor(.white)
+                //Spacer()
                 Image("delivery addresse")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 155,height: 155)
+                    .border(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                    .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                    .padding()
             }.padding(.bottom,15)
             
             ForEach($appViewModel.products, id: \.self) { $product in
@@ -48,11 +54,15 @@ struct DeliveryDetailsView: View {
                     }
                     .padding(15)
                     // .padding(.top,15)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                    .foregroundColor(.white)
                     Image("shop")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 155,height: 100)
+                        .border(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                        .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                        .padding()
                 }
                 VStack{
                     VStack{
@@ -62,7 +72,8 @@ struct DeliveryDetailsView: View {
                        
                     }.padding(15)
                     // .padding(.top,15)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                    .foregroundColor(.white)
                 }
                 
             }
@@ -73,10 +84,10 @@ struct DeliveryDetailsView: View {
                 
             }.font(.title3)
                 .fontWeight(.semibold)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .padding()
                 .padding(.horizontal, 8)
-                .background(Color.purple)
+                .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
                 .cornerRadius(10.0)
         }
        

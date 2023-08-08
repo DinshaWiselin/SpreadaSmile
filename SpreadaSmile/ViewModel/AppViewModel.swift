@@ -29,6 +29,7 @@ class AppViewModel : ObservableObject{
     products.append(product)
     total += product.price * Double(product.numberOfProduct ?? 1)
     guard let userId = Auth.auth().currentUser?.uid else { return }
+      print("checkkkkk check")
     /*let db = Firestore.firestore()
      let ref = db.collection(path).document(product.category)
      ref.setData(["category":product.category, "price":total]){error in
