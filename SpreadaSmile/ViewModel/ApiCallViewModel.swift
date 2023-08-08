@@ -21,7 +21,7 @@ class ApiCallViewModel:ObservableObject{
       return self.products
     }
     return self.products.filter { product in
-      product.price <= 15.00
+      product.price <= 100.00
     }
   }
   init(){

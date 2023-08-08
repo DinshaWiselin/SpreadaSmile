@@ -22,47 +22,43 @@ struct SmileSpreaderView: View {
           .font(.subheadline)
           .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
         Spacer()
-        /*Button("Next Gift") {
-            viewModel.random = Int.random(in: 0..<viewModel.highLighted.count)
-          }*/
-         
         ZStack{
-         /* Circle()
-            .stroke()
-            .frame(width:250 ,height: 250)
-           
-            .foregroundColor(.purple)*/
+         
           if $viewModel.isReady.wrappedValue{
               ZStack{
-                  
-                  AsyncImage(url: URL(string:viewModel.highLighted[random].image))
-                  { phase in
-                       switch phase{
-                       case .empty:
-                       ProgressView()
-                       case .success(let resultImage):
-                       resultImage
-                               
-                       .resizable()
-                       .frame(width: 280, height: 270)
-                       //.scaledToFit()
-                       .aspectRatio(contentMode: .fit)
-                       .cornerRadius(10)
-                      // .padding(.trailing,65)
-                       .overlay{
-                           
-                           Text("30% Sale").font(.largeTitle)
-                               .bold()
-                               .foregroundColor(.yellow)
-                               .rotationEffect(.degrees(-25))
-                               .padding()
-                       }
-                       case .failure(_):
-                       Image("Sweets")
-                       @unknown default:
-                       Text("FAIL")
-                       }
-                       }
+                  // ForEach(viewModel.highLighted, id: \.id) { randomProduct in
+                  NavigationLink(destination: GiftDetailsView(product: viewModel.highLighted[random])
+                   , label:{
+                      AsyncImage(url: URL(string: viewModel.highLighted[random].image))
+                       { phase in
+                            switch phase{
+                            case .empty:
+                            ProgressView()
+                            case .success(let resultImage):
+                            resultImage
+                                    
+                            .resizable()
+                            .frame(width: 280, height: 270)
+                            //.scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(10)
+                           // .padding(.trailing,65)
+                            .overlay{
+                                
+                                Text("30% Sale").font(.largeTitle)
+                                    .bold()
+                                    .foregroundColor(.yellow)
+                                    .rotationEffect(.degrees(-25))
+                                    .padding()
+                            }
+                            case .failure(_):
+                            Image("Sweets")
+                            @unknown default:
+                            Text("FAIL")
+                            }
+                            }
+                   })
+
                         /* .aspectRatio(contentMode: .fit)
                          .frame(width: 250,height: 250)
                          .cornerRadius(10)*/
@@ -76,8 +72,7 @@ struct SmileSpreaderView: View {
            
         }
           Spacer()
-          Text("\(viewModel.highLighted.count)")
-          Text("\(random)")
+         
           Button(action: {
               // What to perform
              // viewModel.isAnimated = true

@@ -69,7 +69,7 @@ struct ShoppingCartView: View {
                     .shadow(radius: 3)
                 DatePicker(selection: $date,
                            label: { Text("Delivery Date").padding(.horizontal,8)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.white)
 
                 })
                 
@@ -85,18 +85,18 @@ struct ShoppingCartView: View {
                 
            // .background(.purple)
             //.cornerRadius(30)
-            .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))
+            .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
             /*PaymentButton(action: appViewModel.pay)
              .padding()*/
             Button("save"){
                 self.sheetPresented.toggle()
             }.font(.title2)
                     .fontWeight(.semibold)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.white)
                  //   .foregroundColor(.black)
                     .padding()
                     .padding(.horizontal, 8)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
                     .cornerRadius(10.0)
             .sheet(isPresented: $sheetPresented){
                 print("cancel")

@@ -66,7 +66,7 @@ struct GiftDetailsView: View {
         //.frame(maxHeight: .infinity, alignment: .bottom)
         .edgesIgnoringSafeArea(.bottom)*/
       }
-      .navigationTitle("Your Gift")
+      .navigationTitle("Your Gift").foregroundColor(.white)
       .toolbar {
         /* Image(systemName: "heart.fill")
           .foregroundColor(.purple)*/
@@ -116,7 +116,7 @@ struct DescriptionView: View {
                 .onAppear{product.getShop()}
                 .bold()
                 .font(.title2)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
             
                 .padding(.top,5)
             
@@ -137,7 +137,7 @@ struct DescriptionView: View {
                         .padding(.all, 8)
                 }
                 .frame(width: 30, height: 30)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 Text("\(product.numberOfProduct ?? 1)")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -148,13 +148,13 @@ struct DescriptionView: View {
                     appViewModel.myProduct = product
                 }) {
                     Image(systemName: "plus")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.all, 8)
                 }
                 Spacer()
                 Text("$\(String(format: "%.2f", product.price))")
                     .font(.title)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
             }
         }
         
