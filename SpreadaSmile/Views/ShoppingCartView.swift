@@ -112,6 +112,10 @@ struct ShoppingCartView: View {
     }
     .navigationTitle("My Cart")
      .padding(.top)
+     .onAppear{
+       appViewModel.listenProducts()
+     
+     }
      .onDisappear {
      if appViewModel.paymentSuccess {
      appViewModel.paymentSuccess = false

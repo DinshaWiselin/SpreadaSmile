@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     @EnvironmentObject var authService : FirebaseAuthService
+    @EnvironmentObject var appViewModel : AppViewModel
     @State var email : String = ""
     @State var password : String = ""
     var body: some View {
@@ -41,6 +42,10 @@ struct SignInView: View {
            
             Button("SignIn"){
                 authService.signIn(emailAdress: email, password: password)
+                   
+                      appViewModel.listenProducts()
+                    
+                 
             }
                 .font(.title2)
                 .frame(width: 150,height: 50)
@@ -54,6 +59,10 @@ struct SignInView: View {
                     .padding()
                 Button("SignUp"){
                     authService.signUp(emailAdress: email, password: password)
+                      
+                          appViewModel.listenProducts()
+                        
+                        
                 } .font(.title3)
                     .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
                     //.bold()

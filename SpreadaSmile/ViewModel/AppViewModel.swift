@@ -19,39 +19,36 @@ class AppViewModel : ObservableObject{
     @Published var paymentSuccess = false
      
    init(){
-       
+       listenProducts()
     //FirebaseApp.configure()
   }
-  // Payment-related variables
-  // let paymentHandler = PaymentHandler()
 
   func addToCart(product: Product) {
     products.append(product)
     total += product.price * Double(product.numberOfProduct ?? 1)
-    guard let userId = Auth.auth().currentUser?.uid else { return }
-      print("checkkkkk check")
-    /*let db = Firestore.firestore()
-     let ref = db.collection(path).document(product.category)
-     ref.setData(["category":product.category, "price":total]){error in
-     if let error = error{
-     print(error.localizedDescription)
-     }
-     }*/
-    //try db.collection(path).addDocument(from: product.category)
-    let userDocument = db.collection(path).document(userId)
-      let data:[Any] = [["category" : product.category,
-              "Shop address" : product.shopName!,
-         "price" : product.price,
-              "numberOfProducts" : product.numberOfProduct!] as [String : Any]]
-    /*  washingtonRef.updateData([
-          "regions": FieldValue.arrayUnion(["greater_virginia"])
-      ])*/
-      userDocument.updateData(["items" :FieldValue.arrayUnion(data)])
-     /* userDocument.setData(data){error in
-      if let error = error{
-        print(error.localizedDescription)
-      }
-    }*/
+   guard let userId = Auth.auth().currentUser?.uid else { return }
+     let userDocument = db.collection(path).document(userId)
+      let data:[String : Any] = ["category" : product.category,
+               "Shop address" : product.shopName!,
+          "price" : product.price,
+               "numberOfProducts" : product.numberOfProduct!] as [String : Any]
+    
+
+    //  db.collection(path).addDocument(data: ["items" : data])
+    
+      userDocument.getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching document: \(error.localizedDescription)")
+                return
+            }
+            if let document = document, document.exists {
+                // Update if the document already exists
+                userDocument.updateData(["items": FieldValue.arrayUnion([data])])
+            } else {
+                // Set data if the document does not exist
+                userDocument.setData(["items" : [data]])
+            }
+        }
       listenProducts()
   }
     func removeFromCart(product:Product) {
@@ -63,7 +60,7 @@ class AppViewModel : ObservableObject{
          "price" : product.price,
               "numberOfProducts" : product.numberOfProduct!] as [String : Any]]
         let userDocument = db.collection(path).document(userId)
-        userDocument.updateData(["items" :FieldValue.arrayRemove(data)]){error in
+       userDocument.updateData(["items" :FieldValue.arrayRemove(data)]){error in
             if let error = error{
                print(error)
             }else{
@@ -98,17 +95,6 @@ class AppViewModel : ObservableObject{
             }
         }
     }
-    
-    /*func pay() {
-     paymentHandler.startPayment(products: products, total: total) { success in
-     self.paymentSuccess = (success != 0)
-     self.products = []
-     self.total = 0
-     }
-     }
-     func getCurrentProduct(id : Int){
-     self.myProduct = ProductsCount(product:apiCall.products.first(where : {$0.id == id})!, numberOfProducts: 1)
-     }*/
   }
 
 

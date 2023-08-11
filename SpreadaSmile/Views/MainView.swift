@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-   
+    @EnvironmentObject var appViewModel : AppViewModel
     var body: some View {
         TabView {
          SmileSpreaderView()
@@ -18,19 +18,27 @@ struct MainView: View {
                     
                     Image(systemName: "house.circle.fill")
                 }.tag(1)
+                .onAppear{
+                  appViewModel.listenProducts()
+                
+                }
             
           DummyView()
                 .tabItem {
                     Text("Gifts")
                     Image(systemName: "gift.circle.fill")
                }.tag(2)
+                .onAppear{
+                  appViewModel.listenProducts()
+                
+                }
             FavoritesView()
                 .tabItem{
                     Text("Favorites")
                     Image(systemName: "heart.circle.fill")
                 }
         }.accentColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
-          
+           
     }
 }
 

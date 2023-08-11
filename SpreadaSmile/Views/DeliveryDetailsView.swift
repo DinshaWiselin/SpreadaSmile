@@ -4,8 +4,9 @@
 //
 //  Created by Dinsha Wiselin Christudhas on 07.07.23.
 //
-
+import MapKit
 import SwiftUI
+import UIKit
 
 struct DeliveryDetailsView: View {
    // var shopName :ProductCategories
@@ -17,8 +18,25 @@ struct DeliveryDetailsView: View {
     @Binding var pin : String
     @Binding var sheetPresented : Bool
    // @Binding private var date : Date
-    var body: some View {
-        VStack{
+    @StateObject private var mapAPI = MapAPI()
+     @State private var text = ""
+     
+    var body: some View{
+   /* VStack {
+            TextField("Enter an address", text: $text)
+               .textFieldStyle(.roundedBorder)
+               .padding(.horizontal)
+            
+            Button("Find address") {
+               mapAPI.getLocation(address: text, delta: 0.5)
+            }
+            
+            Map(coordinateRegion: $mapAPI.region, annotationItems: mapAPI.locations) { location in
+               MapMarker(coordinate: location.coordinate, tint: .blue)
+            }
+            .ignoresSafeArea()
+         }*/
+       VStack{
             Text("Your gift will be delivered soon...")
                 .font(.title)
                 .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
@@ -36,12 +54,14 @@ struct DeliveryDetailsView: View {
                     .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
                     .foregroundColor(.white)
                 //Spacer()
-                Image("delivery addresse")
+                MyMapView()
+                    .frame(width: 155,height: 155)
+               /*Image("delivery addresse")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 155,height: 155)
                     .border(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
-                    .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))*/
                     .padding()
             }.padding(.bottom,15)
             
@@ -56,12 +76,14 @@ struct DeliveryDetailsView: View {
                     // .padding(.top,15)
                     .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
                     .foregroundColor(.white)
-                    Image("shop")
+                   // MyMapView()
+                        .frame(width: 155,height: 155)
+                  /*  Image("shop")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 155,height: 100)
                         .border(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
-                        .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))*/
                         .padding()
                 }
                 VStack{
@@ -80,7 +102,7 @@ struct DeliveryDetailsView: View {
             Spacer()
             Button("cancel"){
                 sheetPresented = false
-                ShoppingCartView()
+                //ShoppingCartView()
                 
             }.font(.title3)
                 .fontWeight(.semibold)
@@ -99,4 +121,18 @@ struct DeliveryDetailsView_Previews: PreviewProvider {
         DeliveryDetailsView(name: .constant("Dinsha"), street: .constant("Street"), houseNo:.constant("20"), city:.constant("Berlin"), pin:.constant("16766"), sheetPresented: .constant(true))
             .environmentObject(AppViewModel())
     }
+}
+struct MyMapView: UIViewRepresentable {
+    typealias UIViewType = MKMapView
+    //@Binding var directions: [String]
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        return mapView
+    }
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        
+    }
+  /*  func makeCoordinator() -> MapViewCoordinator {
+        return MapViewCoordinator()
+    }*/
 }

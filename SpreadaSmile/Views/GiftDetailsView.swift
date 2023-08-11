@@ -165,16 +165,7 @@ struct DescriptionView: View {
         .cornerRadius(30)
         //.offset(x: 0, y: -20.0)
         VStack{
-            /* Button(action:appViewModel.addToCart(product: product)){
-             Label("Add to Cart")
-             .font(.title3)
-             .fontWeight(.semibold)
-             .foregroundColor(.black)
-             .padding()
-             .padding(.horizontal, 8)
-             .background(Color.purple)
-             .cornerRadius(10.0)
-             }*/
+           
             Button("Add to Cart") {
                 appViewModel.myProduct = product
                 if appViewModel.myProduct.numberOfProduct == nil{
@@ -188,32 +179,7 @@ struct DescriptionView: View {
                 .padding(.horizontal, 8)
                 .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
                 .cornerRadius(10.0)
-            /*Button("Buy Now") {
-             // PaymentButtonView()
-             } .font(.title3)
-             .fontWeight(.semibold)
-             .foregroundColor(.black)
-             .padding()
-             .padding(.horizontal, 8)
-             .background(Color.purple)
-             .cornerRadius(10.0)*/
-            
-            /* Text("Add to Cart")
-             .font(.title3)
-             .fontWeight(.semibold)
-             .foregroundColor(.black)
-             .padding()
-             .padding(.horizontal, 8)
-             .background(Color.purple)
-             .cornerRadius(10.0)
-             Text("Buy Now")
-             .font(.title3)
-             .fontWeight(.semibold)
-             .foregroundColor(.black)
-             .padding()
-             .padding(.horizontal, 8)
-             .background(Color.purple)
-             .cornerRadius(10.0)*/
+           
         }
         
         

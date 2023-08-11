@@ -17,6 +17,8 @@
 		0F2DF3D52A4ADB0500C01FAA /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DF3D42A4ADB0500C01FAA /* SignInView.swift */; };
 		0F2DF3D72A4AEE9A00C01FAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F2DF3D62A4AEE9A00C01FAA /* GoogleService-Info.plist */; };
 		0F346EA22A7145A300290928 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F346EA12A7145A300290928 /* FirebaseFirestore */; };
+		0FA0023C2A82F11E00B9A337 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA0023B2A82F11E00B9A337 /* MapView.swift */; };
+		0FA112EA2A83BFCB000D0365 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA112E92A83BFCB000D0365 /* MapLocation.swift */; };
 		0FA404D12A4A95B5007C206C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA404D02A4A95B5007C206C /* FirebaseAuth */; };
 		0FA404D42A4A97C7007C206C /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA404D32A4A97C7007C206C /* FirebaseAuthService.swift */; };
 		0FA6AC0A2A580AD300F43773 /* DeliveryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6AC092A580AD300F43773 /* DeliveryDetailsView.swift */; };
@@ -69,6 +71,8 @@
 		0F2DF3D02A4AD77B00C01FAA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0F2DF3D42A4ADB0500C01FAA /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		0F2DF3D62A4AEE9A00C01FAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FA0023B2A82F11E00B9A337 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0FA112E92A83BFCB000D0365 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		0FA404CA2A495383007C206C /* SpreadaSmile PflichtHeft.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpreadaSmile PflichtHeft.pages"; path = "../../SpreadaSmile PflichtHeft.pages"; sourceTree = "<group>"; };
 		0FA404CB2A49538A007C206C /* SpreadaSmile PflichtHeft.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpreadaSmile PflichtHeft.pages"; path = "../SpreadaSmile PflichtHeft.pages"; sourceTree = "<group>"; };
 		0FA404D32A4A97C7007C206C /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				0F2C3AC32A4C7276003495F2 /* ProductsFeed.swift */,
 				0FB9BCC82A5E849600F280B4 /* ProductCategories.swift */,
 				0FB9BCCA2A5E85C400F280B4 /* TrendingCategories.swift */,
+				0FA112E92A83BFCB000D0365 /* MapLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				0FB9BCD22A5E9E1700F280B4 /* ProductRow.swift */,
 				0FB9BCD42A5EA9CC00F280B4 /* PaymentButtonView.swift */,
 				0FB381362A60032A00075D0F /* SmileSpreaderView.swift */,
+				0FA0023B2A82F11E00B9A337 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				0FB9BCCD2A5E933D00F280B4 /* CategoryCard.swift in Sources */,
 				0FBF16AB2A56B569001C3A2E /* MainView.swift in Sources */,
 				0FA6AC0A2A580AD300F43773 /* DeliveryDetailsView.swift in Sources */,
+				0FA112EA2A83BFCB000D0365 /* MapLocation.swift in Sources */,
 				0FBF16AD2A56B686001C3A2E /* FavoritesView.swift in Sources */,
 				0FB9BCCF2A5E9A7100F280B4 /* CartButton.swift in Sources */,
 				0F2DF3D52A4ADB0500C01FAA /* SignInView.swift in Sources */,
@@ -402,6 +409,7 @@
 				0FB9BCCB2A5E85C400F280B4 /* TrendingCategories.swift in Sources */,
 				0FA404D42A4A97C7007C206C /* FirebaseAuthService.swift in Sources */,
 				0FBF16AF2A56B6B2001C3A2E /* CategoriesView.swift in Sources */,
+				0FA0023C2A82F11E00B9A337 /* MapView.swift in Sources */,
 				0F2C3AD92A52F413003495F2 /* SingleProduct.swift in Sources */,
 				0F2C3ADD2A54046B003495F2 /* DummyView.swift in Sources */,
 				0F2C3AC42A4C7276003495F2 /* ProductsFeed.swift in Sources */,
