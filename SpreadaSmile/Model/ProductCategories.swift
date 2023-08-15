@@ -10,12 +10,7 @@ struct ProductCategories: Identifiable,Hashable {
     var id = UUID()
     var name: String
     var image: String
-    static var shopNames = [ProductCategories(name: "", image: ""),
-                             ProductCategories(name: "", image: ""),
-                             ProductCategories(name: "", image: ""),
-                             ProductCategories(name: "", image: ""),
-                             ProductCategories(name: "", image: ""),
-                             ProductCategories(name: "", image: "")]
+ 
     static var productTrending = [ProductCategories(name: "jewelery", image: "jewells"),
                                   ProductCategories(name: "men's clothing", image: "Mens Wear"),
                                   ProductCategories(name: "electronics", image: "electronics"),

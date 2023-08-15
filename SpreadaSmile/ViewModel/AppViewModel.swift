@@ -31,7 +31,9 @@ class AppViewModel : ObservableObject{
       let data:[String : Any] = ["category" : product.category,
                "Shop address" : product.shopName!,
           "price" : product.price,
-               "numberOfProducts" : product.numberOfProduct!] as [String : Any]
+               "numberOfProducts" : product.numberOfProduct!,
+                                 "description" : product.description,
+                                 "image" : product.image] as [String : Any]
     
 
     //  db.collection(path).addDocument(data: ["items" : data])
@@ -54,11 +56,17 @@ class AppViewModel : ObservableObject{
     func removeFromCart(product:Product) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
     total -= product.price * Double(product.numberOfProduct ?? 1)
-      let data:[Any] =
+     /* let data:[Any] =
            [ ["category" : product.category,
               "Shop address" : product.shopName!,
          "price" : product.price,
-              "numberOfProducts" : product.numberOfProduct!] as [String : Any]]
+              "numberOfProducts" : product.numberOfProduct!] as [String : Any]]*/
+        let data:[Any] = [ ["category" : product.category,
+                 "Shop address" : product.shopName!,
+            "price" : product.price,
+                 "numberOfProducts" : product.numberOfProduct!,
+                                   "description" : product.description,
+                                   "image" : product.image] as [String : Any]]
         let userDocument = db.collection(path).document(userId)
        userDocument.updateData(["items" :FieldValue.arrayRemove(data)]){error in
             if let error = error{
@@ -87,13 +95,16 @@ class AppViewModel : ObservableObject{
                         let resultShop = cart["Shop address"] as! String
                         let resultPrice = cart["price"] as! Double
                         let resultNumberOf = cart["numberOfProducts"] as! Int
-                        let resultProduct = Product(id: 1, price:resultPrice, category: resultCategory, description: "", image: "",numberOfProduct: resultNumberOf,shopName: resultShop)
+                        let resultImage = cart["image"] as! String
+                        let resultDescription = cart["description"] as! String
+                        let resultProduct = Product(id: 1, price:resultPrice, category: resultCategory, description: resultDescription, image: resultImage, numberOfProduct: resultNumberOf,shopName: resultShop)
                         newProducts.append(resultProduct)
                     }
                     self.products = newProducts
                 }
             }
         }
+        print(self.products)
     }
   }
 

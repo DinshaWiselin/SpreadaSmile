@@ -80,3 +80,42 @@ class MapAPI: ObservableObject{
                 .resume()
              }
           }
+/*import Cocoa
+import MapKit
+import CoreLocation
+//import PlaygroundSupport
+//PlaygroundPage.current.needsIndefiniteExecution = true
+
+let geocoder = CLGeocoder()
+//geocoder.geocodeAddressString("1 Pall Mall East, London SW1Y 5AU") { (placemarks: [CLPlacemark]? , error: Error?) in
+geocoder.geocodeAddressString("Tucholzskrstrasse 83,Hennigsdorf"){(placemarks, error) in
+if let placemarks = placemarks {
+        let start_placemark = placemarks[0]
+        geocoder.geocodeAddressString("Buckingham Palace, London SW1A 1AA", completionHandler: { ( placemarks: [CLPlacemark]?, error: Error?) in
+            if let placemarks = placemarks {
+                let end_placemark = placemarks[0]
+
+                // Okay, we've geocoded two addresses as start_placemark and end_placemark.
+                let start = MKMapItem(placemark: MKPlacemark(coordinate: start_placemark.location!.coordinate))
+                let end = MKMapItem(placemark: MKPlacemark(coordinate: end_placemark.location!.coordinate))
+
+                // Now we've got start and end MKMapItems for MapKit, based on the placemarks. Build a request for
+                // a route by car.
+                let request: MKDirections.Request = MKDirections.Request()
+                request.source = start
+                request.destination = end
+                request.transportType = MKDirectionsTransportType.automobile
+
+                               // Execute the request on an MKDirections object
+                               let directions = MKDirections(request: request)
+                directions.calculate(completionHandler: { (response: MKDirections.Response?, error: Error?) in
+                                   // Now we should have a route.
+                                   if let routes = response?.routes {
+                                       let route = routes[0]
+                                       print(route.distance) // 2,307 metres.
+                                   }
+                               })
+                           }
+                       })
+                   }
+               }*/

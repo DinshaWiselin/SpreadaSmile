@@ -12,30 +12,61 @@ import UIKit
 struct MapView: View {
     @State private var directions: [String] = []
     @State private var showDirections = false
-    
+    @Binding var mapPresented : Bool
     var body: some View {
+        
         VStack {
            MyMapView(directions: $directions)
-            
-            Button(action: {
-                self.showDirections.toggle()
-            }, label: {
-                Text("Show directions")
-            })
-            .disabled(directions.isEmpty)
-            .padding()
+            HStack{
+                Button(action: {
+                    self.showDirections.toggle()
+                }, label: {
+                    Text("Directions")
+                }).font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal, 8)
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                    .cornerRadius(10.0)
+                    .disabled(directions.isEmpty)
+                    .padding()
+                Button("cancel"){
+                     mapPresented = false
+                     //ShoppingCartView()
+                     
+                 }.font(.title3)
+                     .fontWeight(.semibold)
+                     .foregroundColor(.white)
+                     .padding()
+                     .padding(.horizontal, 8)
+                     .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                     .cornerRadius(10.0)
+            }
         }.sheet(isPresented: $showDirections, content: {
             VStack(spacing: 0) {
                 Text("Directions")
                     .font(.largeTitle)
                     .bold()
                     .padding()
-                
                 Divider().background(Color(UIColor.systemBlue))
                 
                 List(0..<self.directions.count, id: \.self) { i in
                     Text(self.directions[i]).padding()
-                }
+                } .padding(15)
+                    .padding(.top,15)
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+              /*  Button("cancel"){
+                    mapPresented = false
+                    //ShoppingCartView()
+                    
+                }.font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal, 8)
+                    .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                    .cornerRadius(10.0)*/
             }
         })
     }
@@ -56,15 +87,15 @@ struct MapView: View {
             mapView.delegate = context.coordinator
             
             let region = MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: 40.71, longitude: -74),
+                center: CLLocationCoordinate2D(latitude: 52.531677, longitude: 13.381777),
                 span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
             mapView.setRegion(region, animated: true)
             
             // NYC
-            let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.71, longitude: -74))
+            let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 52.534080, longitude: 13.181716))
             
             // Boston
-            let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.36, longitude: -71.05))
+            let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 52.632048, longitude: 13.201140))
             
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: p1)
@@ -101,6 +132,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(mapPresented: .constant(true))
     }
 }

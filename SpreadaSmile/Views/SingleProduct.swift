@@ -7,7 +7,9 @@
 
 import SwiftUI
 struct SingleProduct: View {
-    var product:Product
+    @State var product:Product
+    
+    @EnvironmentObject var viewModel : ApiCallViewModel
     var body: some View {
         
         HStack{
@@ -25,6 +27,25 @@ struct SingleProduct: View {
                     .foregroundColor(.white)
                     .frame(width: 200,height: 20)
                    // .padding(.bottom,60)
+                Button(action: {
+                    if product.isFavorite == nil{
+                        product.isFavorite = false
+                    }
+                    product.isFavorite?.toggle()
+                    print(product.isFavorite)
+                                        //  Update saved favourites
+                    viewModel.updateFavorites()
+                }) {
+                    if product.isFavorite ?? false {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(Color.yellow).padding()
+                    } else {
+                        Image(systemName: "star")
+                            .foregroundColor(Color.gray).padding()
+                    }
+                    
+                }.buttonStyle(.borderless)
+                
             }.padding(.leading,30)
             //.padding()
             AsyncImage(url: URL(string:product.image)) { phase in
@@ -69,6 +90,7 @@ struct SingleProduct: View {
 struct SingleProduct_Previews: PreviewProvider {
     static var previews: some View {
         SingleProduct(product:Product.dummyProduct)
+            .environmentObject(ApiCallViewModel())
     }
 }
 

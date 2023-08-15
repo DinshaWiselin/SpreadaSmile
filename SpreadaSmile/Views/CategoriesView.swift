@@ -18,7 +18,7 @@ struct CategoriesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(ProductCategories.productTrending, id: \.id) { category in
-                        NavigationLink(destination: HomeView(category: category)
+                        NavigationLink(destination: ProductListView(category: category)
                             .environmentObject(apiViewModel)){
             
                                 CategoryCard(productCategory: category)

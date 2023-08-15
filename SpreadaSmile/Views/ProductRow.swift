@@ -4,25 +4,25 @@ struct ProductRow: View {
     var product: Product
   var body: some View {
       HStack(spacing: 20) {
-          AsyncImage(url: URL(string:product.image)){ phase in
-              switch phase{
-              case .empty:
-                  ProgressView()
-              case .success(let resultImage):
-                  resultImage
-                  
-                      .resizable()
-                      .frame(width: 100, height: 100)
-                  //.scaledToFit()
-                      .aspectRatio(contentMode: .fit)
-                      .cornerRadius(10)
-                      .padding(.trailing,65)
+          AsyncImage(url: URL(string:product.image)) { phase in
+               switch phase{
+               case .empty:
+               ProgressView()
+               case .success(let resultImage):
+               resultImage
+                       
+               .resizable()
+               .frame(width: 140, height: 140)
+               //.scaledToFit()
+               .aspectRatio(contentMode: .fit)
+               .cornerRadius(10)
+               .padding(.trailing,65)
               case .failure(_):
-                  Image("Sweets")
-              @unknown default:
-                  Text("FAIL")
-              }
-          }
+               Image("Sweets")
+               @unknown default:
+               Text("FAIL")
+               }
+               }
           /*.aspectRatio(contentMode: .fit)
            .frame(width: 50)
            .cornerRadius(10)*/

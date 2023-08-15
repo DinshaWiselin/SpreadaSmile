@@ -13,18 +13,22 @@ struct Product : Codable,Hashable{
   var category : String
   var description :String
   var image : String
+    // new variable for shopingCartView
   var numberOfProduct:Int? = 1
+    //new variable for FavoritesView
+  var isFavorite:Bool? = false
+    //new variable for DeliveryDetailsView
   var shopName :String? = "Shop Name and Address"
     mutating func getShop(){
         switch self.category {
       case "jewelery":
-          self.shopName = "Maha Jwellery, 15454, Chennai"
+          self.shopName = "Trend Design Jewellery,Klosterstraße 3, 13581 Berlin"
       case "men's clothing":
-            self.shopName = "Shopify Textiles, 16761, Spandau"
+            self.shopName = "Engbers, Brunsbütteler Damm 112, 13581 Berlin"
       case "women's clothing":
-            self.shopName = "Women's world, 36095, Berlin"
+            self.shopName = "VERO MODA, Klosterstraße 3, 13581 Berlin"
       case "electronics":
-            self.shopName = "Trend Electro, 16662, Kreusberg"
+            self.shopName = "Trend Electro,An den Freiheitswiesen 5, 13597 Berlin"
       default:
             self.shopName = "Nothing"
       }

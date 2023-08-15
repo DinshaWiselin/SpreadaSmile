@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DummyView: View {
+struct GiftsView: View {
     @EnvironmentObject var authservice : FirebaseAuthService
     //@StateObject var viewModel = ApiCallViewModel()
     @EnvironmentObject var appViewModel : AppViewModel
@@ -53,6 +53,6 @@ struct DummyView: View {
 
 struct DummyView_Previews: PreviewProvider {
     static var previews: some View {
-        DummyView().environmentObject(AppViewModel())
+        GiftsView().environmentObject(AppViewModel())
     }
 }

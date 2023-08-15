@@ -13,6 +13,8 @@ class ApiCallViewModel:ObservableObject{
   @Published var products: [Product] = []
   @Published var searchProduct: String = ""
   @Published var navPath = NavigationPath()
+  @Published var showFavoritesOnly = false
+  var savedFavorites: [Int] = []
   @Published var isReady = false
   var isAnimated = false
  //@Published var random = 0
@@ -21,7 +23,7 @@ class ApiCallViewModel:ObservableObject{
       return self.products
     }
     return self.products.filter { product in
-      product.price <= 100.00
+      product.price <= 200.00
     }
   }
   init(){
@@ -79,7 +81,32 @@ class ApiCallViewModel:ObservableObject{
     //MARK: SCHRITT 4: API CALL STARTEN
     task.resume()
   }
-   
+    
+    func updateFavorites() {
+        print(products)
+        for product in products {
+            if product.isFavorite ?? false && !savedFavorites.contains(product.id) {
+                savedFavorites.append(product.id)
+            } else if !(product.isFavorite ?? true) && savedFavorites.contains(product.id) {
+                let idx = savedFavorites.firstIndex { $0 == product.id }
+                guard idx != nil else { return }
+                savedFavorites.remove(at: idx!)
+            }
+        }
+        UserDefaults.standard.set(savedFavorites, forKey: "favourites")
+        print(savedFavorites)
+    }
+    func getFavorites() {
+        if let retrievedFavorites = UserDefaults.standard.object(forKey: "favourites") as? [Int] {
+            savedFavorites = retrievedFavorites
+        }
+        for idx in 0..<products.count {
+            if savedFavorites.contains(products[idx].id) {
+                products[idx].isFavorite = true
+            }
+        }
+    }
+
 }
 
 

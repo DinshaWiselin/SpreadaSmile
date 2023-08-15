@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @EnvironmentObject var viewModel : ApiCallViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            List{
+                ForEach(viewModel.savedFavorites,id: \.self){fav in
+                   // SingleProduct(product: fav)
+                    Text(fav.description)
+                    
+                }
+            }
+        }
     }
 }
 

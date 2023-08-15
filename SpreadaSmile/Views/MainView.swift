@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject var appViewModel : AppViewModel
     var body: some View {
         TabView {
-         SmileSpreaderView()
+         HomeView()
                 .tabItem {
                     Text("Home")
                     
@@ -23,7 +23,7 @@ struct MainView: View {
                 
                 }
             
-          DummyView()
+          GiftsView()
                 .tabItem {
                     Text("Gifts")
                     Image(systemName: "gift.circle.fill")

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct TrendingCategories: Identifiable {
+/*struct TrendingCategories: Identifiable {
     var id = UUID()
     var name: String
     var image: String
@@ -16,4 +16,4 @@ struct TrendingCategories: Identifiable {
 
     
 }
-
+*/

@@ -1,58 +1,160 @@
 //
-//  HomeView.swift
-//  SpreadaSmile
+// SmileSpreaderView.swift
+// SpreadaSmile
 //
-//  Created by Dinsha Wiselin Christudhas on 27.06.23.
+// Created by Dinsha Wiselin Christudhas on 13.07.23.
 //
-
 import SwiftUI
-
 struct HomeView: View {
-    @EnvironmentObject var authservice : FirebaseAuthService
-    @EnvironmentObject var viewModel : ApiCallViewModel
-    var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
-    var category :ProductCategories
-    var body: some View {
-       
-        
-        NavigationStack(path: $viewModel.navPath){
-            ZStack{
-                
-                List{
-                  // LazyVGrid(columns: columns, spacing: 1) {
-                        ForEach(viewModel.products , id: \.self){ product in
-                            
-                            if product.category == category.name
-                            {
-                                NavigationLink(destination: GiftDetailsView(product: product), label:{
-                                    SingleProduct(product: product)
-                                })
+  @EnvironmentObject var authservice : FirebaseAuthService
+  @EnvironmentObject var viewModel : ApiCallViewModel
+  @EnvironmentObject var appViewModel : AppViewModel
+   @State var random = 0
+  var body: some View {
+    NavigationStack{
+      VStack{
+        HStack(alignment: .top){
+          AppBarView()
+           
+        }
+         
+        Text("Find your best gift for your best one.")
+          .font(.subheadline)
+          .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+        Spacer()
+        ZStack{
+         
+          if $viewModel.isReady.wrappedValue{
+              ZStack{
+                  // ForEach(viewModel.highLighted, id: \.id) { randomProduct in
+                  NavigationLink(destination: GiftDetailsView(product: viewModel.highLighted[random])
+                   , label:{
+                      AsyncImage(url: URL(string: viewModel.highLighted[random].image))
+                       { phase in
+                            switch phase{
+                            case .empty:
+                            ProgressView()
+                            case .success(let resultImage):
+                            resultImage
+                                    
+                            .resizable()
+                            .frame(width: 280, height: 270)
+                            //.scaledToFit()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(10)
+                           // .padding(.trailing,65)
+                            .overlay{
+                                
+                                Text("30% Sale").font(.largeTitle)
+                                    .bold()
+                                    .foregroundColor(.yellow)
+                                    .rotationEffect(.degrees(-25))
+                                    .padding()
                             }
-                        }
-                 //  }
-                }
+                            case .failure(_):
+                            Image("Sweets")
+                            @unknown default:
+                            Text("FAIL")
+                            }
+                            }
+                   })
+
+                        /* .aspectRatio(contentMode: .fit)
+                         .frame(width: 250,height: 250)
+                         .cornerRadius(10)*/
+                         .animation(.easeIn)
+              }
+          /* Image(viewModel.highLighted[viewModel.random].image)
+              .resizable()
+              .scaledToFit()*/
+             
+          }
+           
+        }
+          Spacer()
+         
+          Button(action: {
+              // What to perform
+             // viewModel.isAnimated = true
+              self.random = Int.random(in: 0..<viewModel.highLighted.count)
                 
-                .listStyle(.plain)
-                
-                
-                .navigationTitle("SpreadaSmile")
-                
-            
-                /*.navigationDestination(for: Products.self, destination: {product in
-                    GiftDetailsView(product: product)
-                    
-                })*/
-                
-            }
-          
+          }) {
+             
+             Text("Next Gift")
+                  .font(.title3)
+                          .fontWeight(.semibold)
+                          .foregroundColor(.white)
+                          .padding()
+                          .padding(.horizontal, 8)
+                          .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+                          .cornerRadius(10.0)
+          }
+        Spacer()
+        HStack(){
+          Spacer()
+          Button{
+            authservice.signOut()
+          }label:{
+            Image(systemName: "figure.walk.circle.fill")
+              .font(.title)
+             /* .background(RoundedRectangle(cornerRadius: 15).fill(.yellow.opacity(0.3)))*/
+              .background(RoundedRectangle(cornerRadius: 15).fill(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/))
+              .cornerRadius(10)
+              .foregroundColor(.white)
+            Text("SignOut")
+                  .font(.title2)
+                  .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+          }
+           
+           
+        }.padding(10)
+      }
+      .toolbar {
+        NavigationLink {
+          ShoppingCartView()
+            .environmentObject(appViewModel)
+        } label: {
+          CartButton(numberOfProducts: appViewModel.products.count)
             
         }
-        }
+      }
+    }.onAppear{
+      appViewModel.listenProducts()
+    
     }
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(category: ProductCategories(id: UUID(), name: "Jwellery", image: ""))
-            .environmentObject(FirebaseAuthService())
-            .environmentObject(ApiCallViewModel())
-    }
+  }
 }
+struct SmileSpreaderView_Previews: PreviewProvider {
+  static var previews: some View {
+    HomeView().environmentObject(AppViewModel())
+      .environmentObject(ApiCallViewModel())
+  }
+}
+struct AppBarView: View {
+  var body: some View {
+    
+      
+    HStack(){
+      Button(action: {}){
+        Image(systemName: "line.3.horizontal.circle.fill")
+          .font(.largeTitle)
+          .padding()
+          .background(Color(.white))
+          .cornerRadius(10)
+          .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+      }
+      Text("SpreadaSmile")
+        .font(.largeTitle)
+        .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.641, green: 0.203, blue: 0.207)/*@END_MENU_TOKEN@*/)
+      Spacer()
+    }
+  }
+}
+
+
+
+
+
+
+
+
